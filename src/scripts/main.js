@@ -8,34 +8,36 @@ emailInput.addEventListener('input', () => {
   const isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 
   if (value === "") {
-
     emailInput.classList.remove('success', 'error');
   } else if (isValid) {
-
     emailInput.classList.add('success');
     emailInput.classList.remove('error');
   } else {
-
     emailInput.classList.add('error');
     emailInput.classList.remove('success');
   }
 });
 
+// Очистка при фокусе
 [emailInput, messageInput].forEach(el => {
   el.addEventListener('focus', () => {
     el.value = "";
+    el.classList.remove('success', 'error'); // сбрасываем классы тоже
   });
 });
 
-
+// Отправка формы
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   console.log("Email:", emailInput.value);
   console.log("Сообщение:", messageInput.value);
 
-
+  // Очистка значений
   emailInput.value = "";
   messageInput.value = "";
+
+  // Сброс классов (валидация к исходному состоянию)
+  emailInput.classList.remove('success', 'error');
 });
 
 const cards = document.querySelectorAll('.features_cart_1, .features_cart_2, .features_cart_3');
@@ -77,21 +79,17 @@ document.getElementById('total').textContent = String(cards.length).padStart(2, 
 const burgerToggle = document.getElementById("burgerToggle");
 const burgerBlock = document.querySelector(".burger_block");
 const burgerClose = document.getElementById("burgerClose");
-
+const burgerLinks = document.querySelectorAll(".burger_link");
 
 burgerToggle.addEventListener("click", () => {
   burgerBlock.classList.add("show");
-    document.body.style.overflow = "hidden";
+  document.body.style.overflow = "hidden"; // блокируем скролл страницы
 });
-
 
 burgerClose.addEventListener("click", () => {
   burgerBlock.classList.remove("show");
-  document.body.style.overflow = "";
+  document.body.style.overflow = ""; // возвращаем скролл
 });
-
-const burgerLinks = document.querySelectorAll(".burger_link");
-
 
 burgerLinks.forEach(link => {
   link.addEventListener("click", () => {
