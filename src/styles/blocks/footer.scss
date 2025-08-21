@@ -1,12 +1,11 @@
 .footer {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-top: 170px;
-  flex-direction: column;
-  gap: 60px;
-  width: 1194px;
-  height: 191px;
+  width: 100%;
+  gap: 40px;
 }
 
 .footer_socials {
@@ -27,12 +26,16 @@
 
 .footer_logo_block {
   display: flex;
-  align-self: flex-end;
-  flex-direction: row;
-  gap: 492.5px;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  max-width: 1194px;
 }
 
 .footer_ap_arrow {
+  position: absolute;
+  right: 0;
   display: flex;
   align-items: center;
   justify-content: center;
